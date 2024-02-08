@@ -2,6 +2,7 @@ package com.example.spring_swagger.pojo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 @Schema(description = "人类")
@@ -11,11 +12,21 @@ public class Person {
     @NotBlank(message = "名字不能为空")
     private String name;
     @Schema(description = "年龄")
-    @NotBlank(message = "年龄不能为空")
+    @Min(value = 0,message = "最小0岁")
     private Integer age;
     @NotBlank(message = "出生日期不能为空")
     @Schema(description = "出生日期")
     private Date birthday;
+
+    private Home home;
+
+    public Home getHome() {
+        return home;
+    }
+
+    public void setHome(Home home) {
+        this.home = home;
+    }
 
     public String getName() {
         return name;
