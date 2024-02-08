@@ -1,9 +1,9 @@
 package com.example.spring_swagger.pojo;
 
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 import java.util.Date;
 @Schema(description = "人类")
 public class Person {
@@ -13,12 +13,36 @@ public class Person {
     private String name;
     @Schema(description = "年龄")
     @Min(value = 0,message = "最小0岁")
+    @Max(value = 200,message="最大200岁")
     private Integer age;
     @NotBlank(message = "出生日期不能为空")
     @Schema(description = "出生日期")
     private Date birthday;
 
     private Home home;
+
+    @Email(regexp = "asdfasdf",message = "邮件校验")
+    @Size(min = 10,max = 20)
+    private String email;
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private com.example.spring_swagger.config.Person person;
+
+    public com.example.spring_swagger.config.Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(com.example.spring_swagger.config.Person person) {
+        this.person = person;
+    }
 
     public Home getHome() {
         return home;

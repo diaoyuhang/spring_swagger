@@ -6,11 +6,9 @@ import java.util.Map;
 public class Home {
 
     private String address;
-    private String a;
+    private List<Car> familyMember;
 
-    private List<Person> familyMember;
-
-    private Map<String,Person> familyComposition;
+    private Map<String,Car> familyComposition;
 
     public String getAddress() {
         return address;
@@ -20,27 +18,19 @@ public class Home {
         this.address = address;
     }
 
-    public String getA() {
-        return a;
-    }
-
-    public void setA(String a) {
-        this.a = a;
-    }
-
-    public List<Person> getFamilyMember() {
+    public List<Car> getFamilyMember() {
         return familyMember;
     }
 
-    public void setFamilyMember(List<Person> familyMember) {
+    public void setFamilyMember(List<Car> familyMember) {
         this.familyMember = familyMember;
     }
 
-    public Map<String, Person> getFamilyComposition() {
+    public Map<String, Car> getFamilyComposition() {
         return familyComposition;
     }
 
-    public void setFamilyComposition(Map<String, Person> familyComposition) {
+    public void setFamilyComposition(Map<String, Car> familyComposition) {
         this.familyComposition = familyComposition;
     }
 }

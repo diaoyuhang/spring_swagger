@@ -37,7 +37,7 @@ public class PersonController {
             @ApiResponse(responseCode="400",description = "未找到对应用户"),
             @ApiResponse(responseCode="200",description = "成功响应")
     })
-    public ResultBean<Person> add(@RequestBody Person person, @NotBlank @Schema(description = "名字") String name, @RequestHeader("token") String token){
+    public ResultBean<Person> add(@RequestBody Person person, @RequestHeader("token") String token){
         ResultBean<Person> resultBean = new ResultBean();
         resultBean.setDate(new Person());
         return resultBean;
