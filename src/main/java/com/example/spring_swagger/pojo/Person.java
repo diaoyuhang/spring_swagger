@@ -9,13 +9,13 @@ import java.util.Date;
 public class Person {
 
     @Schema(description = "名字")
-    @NotBlank(message = "名字不能为空")
+    @NotBlank(message = "名字不能为空",groups = {ValidateGroup.insert.class})
     private String name;
     @Schema(description = "年龄")
     @Min(value = 0,message = "最小0岁")
     @Max(value = 200,message="最大200岁")
     private Integer age;
-    @NotBlank(message = "出生日期不能为空")
+    @NotBlank(message = "出生日期不能为空",groups = {ValidateGroup.update.class})
     @Schema(description = "出生日期")
     private Date birthday;
 

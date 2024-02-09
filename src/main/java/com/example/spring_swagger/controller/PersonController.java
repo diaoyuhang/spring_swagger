@@ -2,6 +2,7 @@ package com.example.spring_swagger.controller;
 
 import com.example.spring_swagger.pojo.Person;
 import com.example.spring_swagger.pojo.ResultBean;
+import com.example.spring_swagger.pojo.ValidateGroup;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -9,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.models.OpenAPI;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +39,7 @@ public class PersonController {
             @ApiResponse(responseCode="400",description = "未找到对应用户"),
             @ApiResponse(responseCode="200",description = "成功响应")
     })
-    public ResultBean<Person> add(@RequestBody Person person, @RequestHeader("token") String token){
+    public ResultBean<Person> add(@RequestBody @Validated({ValidateGroup.insert.class}) Person person, @RequestHeader("token") String token){
         ResultBean<Person> resultBean = new ResultBean();
         resultBean.setDate(new Person());
         return resultBean;
