@@ -10,6 +10,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.models.OpenAPI;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +20,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @RestController
 @RequestMapping("/person")
-@Tag(name="人群")
+@Tag(name="人群",description = "ababababababababb")
 public class PersonController {
 
     /**
@@ -34,10 +38,10 @@ public class PersonController {
      * @return 返回resultBean
      */
     @PostMapping("/add1")
-    @Operation(summary = "新增人群")
+    @Operation(summary = "新增人群",description = "ababb")
     @ApiResponses(value={
             @ApiResponse(responseCode="400",description = "未找到对应用户"),
-            @ApiResponse(responseCode="200",description = "成功响应")
+            @ApiResponse(responseCode="0",description = "成功响应")
     })
     public ResultBean<Person> add(@RequestBody @Validated({ValidateGroup.insert.class}) Person person, @RequestHeader("token") String token){
         ResultBean<Person> resultBean = new ResultBean();
@@ -46,12 +50,22 @@ public class PersonController {
     }
 
     @GetMapping("/add/{age}")
+    @Operation(summary = "新增人群",operationId = "123456")
+    @ApiResponses(value={
+            @ApiResponse(responseCode="400",description = "未找到对应用户"),
+            @ApiResponse(responseCode="200",description = "成功响应")
+    })
+    public Person add2(@NotBlank(message = "name不能为空") @Size(min = 0,max = 100) @RequestParam("userName") String name, @PathVariable("age") String age) {
+        return new Person();
+    }
+
+    @PostMapping(value = "/add/add3",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Operation(summary = "新增人群")
     @ApiResponses(value={
             @ApiResponse(responseCode="400",description = "未找到对应用户"),
             @ApiResponse(responseCode="200",description = "成功响应")
     })
-    public Person add2(@NotBlank(message = "name不能为空") String name, @PathVariable("age") String age) {
+    public Person add3(Person person) {
         return new Person();
     }
 

@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.*;
 import java.util.Date;
-@Schema(description = "人类")
 public class Person {
 
     @Schema(description = "名字")
@@ -25,6 +24,7 @@ public class Person {
     @Size(min = 10,max = 20)
     private String email;
 
+    private com.example.spring_swagger.config.Person person;
 
     public String getEmail() {
         return email;
@@ -33,8 +33,6 @@ public class Person {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    private com.example.spring_swagger.config.Person person;
 
     public com.example.spring_swagger.config.Person getPerson() {
         return person;
