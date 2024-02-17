@@ -18,13 +18,13 @@ public class Person {
     @Schema(description = "出生日期")
     private Date birthday;
 
-    private Home home;
+//    private Home home;
 
     @Email(regexp = "asdfasdf",message = "邮件校验")
     @Size(min = 10,max = 20)
     private String email;
 
-    private com.example.spring_swagger.config.Person person;
+//    private com.example.spring_swagger.config.Person person;
 
     public String getEmail() {
         return email;
@@ -34,21 +34,21 @@ public class Person {
         this.email = email;
     }
 
-    public com.example.spring_swagger.config.Person getPerson() {
-        return person;
-    }
+//    public com.example.spring_swagger.config.Person getPerson() {
+//        return person;
+//    }
 
-    public void setPerson(com.example.spring_swagger.config.Person person) {
-        this.person = person;
-    }
+//    public void setPerson(com.example.spring_swagger.config.Person person) {
+//        this.person = person;
+//    }
 
-    public Home getHome() {
-        return home;
-    }
+//    public Home getHome() {
+//        return home;
+//    }
 
-    public void setHome(Home home) {
-        this.home = home;
-    }
+//    public void setHome(Home home) {
+//        this.home = home;
+//    }
 
     public String getName() {
         return name;

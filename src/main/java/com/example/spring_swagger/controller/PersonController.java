@@ -13,18 +13,15 @@ import io.swagger.v3.oas.models.OpenAPI;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/person")
@@ -55,11 +52,12 @@ public class PersonController {
             @ApiResponse(responseCode="400",description = "未找到对应用户"),
             @ApiResponse(responseCode="200",description = "成功响应")
     })
-    public Person add2(@NotBlank(message = "name不能为空") @Size(min = 0,max = 100) @RequestParam("userName") String name, @PathVariable("age") String age) {
+    public Person add2(@NotBlank(message = "name不能为空") @Size(min = 0,max = 100) @RequestParam("userName") String name,
+                       @PathVariable("age") String age) {
         return new Person();
     }
 
-    @PostMapping(value = "/add/add3",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/add/add3")
     @Operation(summary = "新增人群")
     @ApiResponses(value={
             @ApiResponse(responseCode="400",description = "未找到对应用户"),
@@ -69,10 +67,21 @@ public class PersonController {
         return new Person();
     }
 
+    @PostMapping(value = "/add/add4")
+    @Operation(summary = "新增人群")
+    public Person add4(Person person) {
+        return new Person();
+    }
+
+    @PostMapping(value = "/add/add5")
+    @Operation(summary = "新增人群")
+    public Person add5(@Schema(name = "A") String a, Date b, @Max(100) @Min(1) Integer c, List<String> d, Map<String,Integer> e) {
+        return new Person();
+    }
+
     @DeleteMapping("/delete")
     @Operation(summary = "删除人群")
-    @Deprecated
-    public String delete(@Parameter(name="姓名") String name){
+    public String delete(String name){
         return "success";
     }
 }
