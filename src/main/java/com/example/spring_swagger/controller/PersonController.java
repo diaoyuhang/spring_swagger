@@ -40,7 +40,7 @@ public class PersonController {
             @ApiResponse(responseCode="400",description = "未找到对应用户"),
             @ApiResponse(responseCode="0",description = "成功响应")
     })
-    public ResultBean<Person> add(@RequestBody @Validated({ValidateGroup.insert.class}) Person person, @RequestHeader("token") String token){
+    public ResultBean<Person> add(@RequestBody @Validated({ValidateGroup.insert.class}) List<Person> person, @RequestHeader("token") String token){
         ResultBean<Person> resultBean = new ResultBean();
         resultBean.setDate(new Person());
         return resultBean;
