@@ -1,10 +1,13 @@
 package com.example.spring_swagger.pojo;
 
+import com.alibaba.fastjson2.JSONObject;
+import com.google.gson.JsonObject;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.*;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class Person {
@@ -32,15 +35,86 @@ public class Person {
     private byte e;
     private int[] f;
     private String[] g;
+
+    private Date[] h;
+
+    private double[] i;
+    private Double[] k;
+    private List<List<Integer>> l;
+    private List<List<String>> m;
+
+    private HashMap<String,Car> n;
+
+    private JsonObject o;
+    private JSONObject p;
+
     private Car[] cars1;
     private List<List<Car>> cars2;
-
-
-
-
-
     private com.example.spring_swagger.config.Person person;
 
+    public JsonObject getO() {
+        return o;
+    }
+
+    public void setO(JsonObject o) {
+        this.o = o;
+    }
+
+    public JSONObject getP() {
+        return p;
+    }
+
+    public void setP(JSONObject p) {
+        this.p = p;
+    }
+
+    public HashMap<String, Car> getN() {
+        return n;
+    }
+
+    public void setN(HashMap<String, Car> n) {
+        this.n = n;
+    }
+
+    public List<List<Integer>> getL() {
+        return l;
+    }
+
+    public void setL(List<List<Integer>> l) {
+        this.l = l;
+    }
+
+    public List<List<String>> getM() {
+        return m;
+    }
+
+    public void setM(List<List<String>> m) {
+        this.m = m;
+    }
+
+    public Date[] getH() {
+        return h;
+    }
+
+    public void setH(Date[] h) {
+        this.h = h;
+    }
+
+    public double[] getI() {
+        return i;
+    }
+
+    public void setI(double[] i) {
+        this.i = i;
+    }
+
+    public Double[] getK() {
+        return k;
+    }
+
+    public void setK(Double[] k) {
+        this.k = k;
+    }
 
     public String[] getG() {
         return g;
