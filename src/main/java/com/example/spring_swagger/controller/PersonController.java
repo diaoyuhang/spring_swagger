@@ -1,8 +1,11 @@
 package com.example.spring_swagger.controller;
 
+import com.alibaba.fastjson2.JSONObject;
+import com.example.spring_swagger.pojo.Car;
 import com.example.spring_swagger.pojo.Person;
 import com.example.spring_swagger.pojo.ResultBean;
 import com.example.spring_swagger.pojo.ValidateGroup;
+import com.google.gson.JsonObject;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -40,48 +43,67 @@ public class PersonController {
             @ApiResponse(responseCode="400",description = "未找到对应用户"),
             @ApiResponse(responseCode="0",description = "成功响应")
     })
-    public ResultBean<Person> add(@RequestBody @Validated({ValidateGroup.insert.class}) List<Person> person, @RequestHeader("token") String token){
+    public ResultBean<Person> add(@RequestBody @Validated({ValidateGroup.insert.class}) ResultBean<List<Person<Car>>> person, @RequestHeader("token") String token,@RequestHeader("token2") Integer token2){
         ResultBean<Person> resultBean = new ResultBean();
         resultBean.setDate(new Person());
         return resultBean;
     }
 
-    @GetMapping("/add/{age}")
-    @Operation(summary = "新增人群",operationId = "123456")
+    @PostMapping("/add2")
+    @Operation(summary = "新增人群",description = "ababb")
     @ApiResponses(value={
             @ApiResponse(responseCode="400",description = "未找到对应用户"),
-            @ApiResponse(responseCode="200",description = "成功响应")
+            @ApiResponse(responseCode="0",description = "成功响应")
     })
-    public Person add2(@NotBlank(message = "name不能为空") @Size(min = 0,max = 100) @RequestParam("userName") String name,
-                       @PathVariable("age") String age) {
-        return new Person();
+    public Date add2(Person person, @RequestHeader("token") String token, @RequestHeader("token2") Integer token2){
+        ResultBean<Person> resultBean = new ResultBean();
+        resultBean.setDate(new Person());
+        return null;
     }
 
-    @PostMapping(value = "/add/add3")
-    @Operation(summary = "新增人群")
-    @ApiResponses(value={
-            @ApiResponse(responseCode="400",description = "未找到对应用户"),
-            @ApiResponse(responseCode="200",description = "成功响应")
-    })
-    public Person add3(Person person) {
-        return new Person();
+    @PostMapping("/add3")
+    public String add3(String name,String age,Car car,Person person){
+        ResultBean<Person> resultBean = new ResultBean();
+        resultBean.setDate(new Person());
+        return null;
     }
 
-    @PostMapping(value = "/add/add4")
-    @Operation(summary = "新增人群")
-    public Person add4(Person person) {
-        return new Person();
-    }
-
-    @PostMapping(value = "/add/add5")
-    @Operation(summary = "新增人群")
-    public Person add5(@Schema(name = "A") String a, Date b, @Max(100) @Min(1) Integer c, List<String> d, Map<String,Integer> e) {
-        return new Person();
-    }
-
-    @DeleteMapping("/delete")
-    @Operation(summary = "删除人群")
-    public String delete(String name){
-        return "success";
-    }
+//    @GetMapping("/add/{age}")
+//    @Operation(summary = "新增人群",operationId = "123456")
+//    @ApiResponses(value={
+//            @ApiResponse(responseCode="400",description = "未找到对应用户"),
+//            @ApiResponse(responseCode="200",description = "成功响应")
+//    })
+//    public Person add2(@NotBlank(message = "name不能为空") @Size(min = 0,max = 100) @RequestParam("userName") String name,
+//                       @PathVariable("age") String age) {
+//        return new Person();
+//    }
+//
+//    @PostMapping(value = "/add/add3")
+//    @Operation(summary = "新增人群")
+//    @ApiResponses(value={
+//            @ApiResponse(responseCode="400",description = "未找到对应用户"),
+//            @ApiResponse(responseCode="200",description = "成功响应")
+//    })
+//    public Person add3(Person person) {
+//        return new Person();
+//    }
+//
+//    @PostMapping(value = "/add/add4")
+//    @Operation(summary = "新增人群")
+//    public Person add4(Person person) {
+//        return new Person();
+//    }
+//
+//    @PostMapping(value = "/add/add5")
+//    @Operation(summary = "新增人群")
+//    public Person add5(@Schema(name = "A") String a, Date b, @Max(100) @Min(1) Integer c, List<String> d, Map<String,Integer> e) {
+//        return new Person();
+//    }
+//
+//    @DeleteMapping("/delete")
+//    @Operation(summary = "删除人群")
+//    public String delete(String name){
+//        return "success";
+//    }
 }

@@ -9,8 +9,9 @@ import javax.validation.constraints.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class Person {
+public class Person<T> {
 
     @Schema(description = "名字")
     @NotBlank(message = "名字不能为空",groups = {ValidateGroup.insert.class})
@@ -42,8 +43,14 @@ public class Person {
     private Double[] k;
     private List<List<Integer>> l;
     private List<List<String>> m;
+    private List<List<Object>> m1;
 
     private HashMap<String,Car> n;
+    private HashMap<String,List<Car>> n1;
+    private Map<String,List<Integer>> n2;
+    private Map<String,Integer> n3;
+    private Map<String,Object> n4;
+    private Map n5;
 
     private JsonObject o;
     private JSONObject p;
@@ -51,6 +58,64 @@ public class Person {
     private Car[] cars1;
     private List<List<Car>> cars2;
     private com.example.spring_swagger.config.Person person;
+
+    private List<T> car3;
+
+    public List<T> getCar3() {
+        return car3;
+    }
+
+    public void setCar3(List<T> car3) {
+        this.car3 = car3;
+    }
+
+    public Map getN5() {
+        return n5;
+    }
+
+    public void setN5(Map n5) {
+        this.n5 = n5;
+    }
+
+    public List<List<Object>> getM1() {
+        return m1;
+    }
+
+    public void setM1(List<List<Object>> m1) {
+        this.m1 = m1;
+    }
+
+    public Map<String, Object> getN4() {
+        return n4;
+    }
+
+    public void setN4(Map<String, Object> n4) {
+        this.n4 = n4;
+    }
+
+    public HashMap<String, List<Car>> getN1() {
+        return n1;
+    }
+
+    public void setN1(HashMap<String, List<Car>> n1) {
+        this.n1 = n1;
+    }
+
+    public Map<String, List<Integer>> getN2() {
+        return n2;
+    }
+
+    public void setN2(Map<String, List<Integer>> n2) {
+        this.n2 = n2;
+    }
+
+    public Map<String, Integer> getN3() {
+        return n3;
+    }
+
+    public void setN3(Map<String, Integer> n3) {
+        this.n3 = n3;
+    }
 
     public JsonObject getO() {
         return o;
