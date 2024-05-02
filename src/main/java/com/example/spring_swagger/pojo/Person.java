@@ -6,10 +6,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.*;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Person<T> {
 
@@ -50,7 +47,7 @@ public class Person<T> {
     private Map<String,List<Integer>> n2;
     private Map<String,Integer> n3;
     private Map<String,Object> n4;
-    private Map n5;
+    private LinkedHashMap n5;
 
     private JsonObject o;
     private JSONObject p;
@@ -69,11 +66,11 @@ public class Person<T> {
         this.car3 = car3;
     }
 
-    public Map getN5() {
+    public LinkedHashMap getN5() {
         return n5;
     }
 
-    public void setN5(Map n5) {
+    public void setN5(LinkedHashMap n5) {
         this.n5 = n5;
     }
 
